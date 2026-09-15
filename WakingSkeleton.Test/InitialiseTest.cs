@@ -4,20 +4,25 @@
 public class InitialiseTest
 {
     [Test]
-    public void initialiseRover()
+    public void InitialiseRover()
     {
-        Rover rover = new Rover();
+        Rover rover = new Rover(new int[] { 2, 3 }, "North");
 
-        int[] TargetPosition = new int[] { 2, 3 };
-        string TargetDirection = "North";
+        int[] targetPosition = { 2, 3 };
+        string targetDirection = "North";
 
-        Assert.That(rover.position, Is.EqualTo(TargetPosition));
-        Assert.That(rover.direction, Is.EqualTo(TargetDirection));
+        Assert.That(rover.Position, Is.EqualTo(targetPosition));
+        Assert.That(rover.Direction, Is.EqualTo(targetDirection));
     }
 }
 
 public class Rover
 {
-    public int[] position { get; set; } = new int[] { 2, 3 };
-    public string direction { get; set; } = "North";
+    public Rover(int[] position, string direction)
+    {
+        Position = position;
+        Direction = direction;
+    }
+    public int[] Position { get; set; }
+    public string Direction { get; set; }
 }
