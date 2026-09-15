@@ -15,14 +15,3 @@ public class InitialiseTest
         Assert.That(rover.Direction, Is.EqualTo(targetDirection));
     }
 }
-
-public class Rover
-{
-    public Rover(int[] position, string direction)
-    {
-        Position = position;
-        Direction = direction;
-    }
-    public int[] Position { get; set; }
-    public string Direction { get; set; }
-}
