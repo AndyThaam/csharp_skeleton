@@ -8,7 +8,7 @@ public class InitialiseTest
     {
         Rover rover = new Rover(new int[] { 2, 3 }, "North");
 
-        int[] targetPosition = { 2, 3 };
+        int[] targetPosition = new int[] { 2, 3 };
         string targetDirection = "North";
 
         Assert.That(rover.Position, Is.EqualTo(targetPosition));
