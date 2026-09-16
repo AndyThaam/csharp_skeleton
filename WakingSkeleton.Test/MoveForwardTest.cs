@@ -6,20 +6,18 @@ using System.Threading.Tasks;
 
 namespace WakingSkeleton.Test
 {
-    public class MoveBackwardsTest
+    public class MoveForewardsTest
     {
         [Test]
-        public void MoveBackWardsTest()
+        public void MoveForeWardsTest()
         {
             var xCoordinant = 1;
             var yCoordinant = 1;
             Rover rover = new Rover(new int[] { xCoordinant, yCoordinant }, "North");
 
 
-            new RoverCommands().ProcessCommandString("B", rover);
-            Assert.That(rover.Position, Is.EqualTo(new int[] { 1, 0 }));
+            new RoverCommands().ProcessCommandString("F", rover);
+            Assert.That(rover.Position, Is.EqualTo(new int[] { 1, 2 }));
         }
     }
 }
-
-

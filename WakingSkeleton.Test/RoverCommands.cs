@@ -8,7 +8,7 @@ namespace WakingSkeleton.Test
 {
     public class RoverCommands
     {
-        public Rover MoveBackwards(Rover rover, string direction)
+        public void MoveBackwards(Rover rover, string direction)
         {
             switch (direction)
             {
@@ -27,40 +27,45 @@ namespace WakingSkeleton.Test
                 default:
                     throw new ArgumentException("Invalid direction");
             }
-            return rover;
         }
 
-        public int[] MoveForwards(Rover rover, string direction)
+        public void MoveForwards(Rover rover, string direction)
         {
             switch (direction)
             {
                 case "North":
-                    return new int[] { rover.Position[0], rover.Position[1] + 1 };
+                    rover.Position = new int[] { rover.Position[0], rover.Position[1] + 1 };
+                    break;
                 case "South":
-                    return new int[] { rover.Position[0], rover.Position[1] - 1 };
+                    rover.Position = new int[] { rover.Position[0], rover.Position[1] - 1 };
+                    break;
                 case "East":
-                    return new int[] { rover.Position[0] + 1, rover.Position[1] };
+                    rover.Position = new int[] { rover.Position[0] + 1, rover.Position[1] };
+                    break;
                 case "West":
-                    return new int[] { rover.Position[0] - 1, rover.Position[1] };
+                    rover.Position = new int[] { rover.Position[0] - 1, rover.Position[1] };
+                    break;
                 default:
                     throw new ArgumentException("Invalid direction");
             }
         }
 
-        public Rover ProcessCommandString(string command, Rover rover)
+        public void ProcessCommandString(string command, Rover rover)
         {
-            switch (command)
+            foreach (char c in command)
             {
-                case "B":
-                    MoveBackwards(rover, rover.Direction);
-                    break;
-                case "F":
-                    MoveForwards(rover, rover.Direction);
-                    break;
-                default:
-                    throw new ArgumentException("Invalid command");
+                switch (c)
+                {
+                    case 'B':
+                        MoveBackwards(rover, rover.Direction);
+                        break;
+                    case 'F':
+                        MoveForwards(rover, rover.Direction);
+                        break;
+                    default:
+                        throw new ArgumentException("Invalid command");
+                }
             }
-            return rover;
         }
     }
 }
